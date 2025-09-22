@@ -1,16 +1,25 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { MenData } from './MenData'
-import { ShoppingCart } from 'lucide-react'
+import { Heart, ShoppingCart } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 import { addToCart, openCart } from '../Redux/Slices/CartSlice'
 
 const Men = () => {
+        const [favourites, setFavourites] = useState([]);
+    
     const dispatch = useDispatch();
     const handleClick = (item) => {
         dispatch(addToCart(item));
         dispatch(openCart());
     }
+    const toggleFavourite = (id) => {
+        if (favourites.includes(id)) {
+            setFavourites(favourites.filter((favId) => favId !== id));
+        } else {
+            setFavourites([...favourites, id]);
+        }
+    };
     return (
         <div>
             <div>
@@ -24,6 +33,17 @@ const Men = () => {
                             <div key={index} className='lg:w-[20%] border-1 text-center md:w-[40%]   border-[#DEE2E6]'>
                                 <div className='relative group'>
                                     <img src={item.img} className='object-cover transition duration-400' />
+                                       <div className="absolute top-2 right-2 ">
+                                    <button onClick={() => toggleFavourite(index)}>
+                                        <Heart
+                                            size={28}
+                                            className={`transition-colors duration-300 ${favourites.includes(index)
+                                                    ? "fill-red-500 text-red-500"
+                                                    : "text-gray-500"
+                                                }`}
+                                        />
+                                    </button>
+                                </div>
                                     <button
                                         onClick={() => handleClick(item)}
                                          className="w-[40%] h-[13%]  bottom-2 left-1/2 -translate-x-1/2 rounded-3xl cursor-pointer absolute  bg-black items-center gap-2 bottom- hidden lg:flex justify-center opacity-0 group-hover:opacity-100 hover:bg-[#88C8BC] hover:text-black transition duration-500  text-white font-serif  "

@@ -1,17 +1,28 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { ProductData } from './ProductData'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, openCart } from '../../Redux/Slices/CartSlice'
-import { ShoppingCart } from 'lucide-react'
+import { addToCart, openCart } from '../Redux/Slices/CartSlice'
+import { Heart, ShoppingCart } from 'lucide-react'
 
 
 const Product = () => {
+    const [favourites, setFavourites] = useState([]);
     const dispatch = useDispatch();
     const handleClick = (item) => {
         dispatch(addToCart(item));
         dispatch(openCart());
     }
+    const toggleFavourite = (id) => {
+        if (favourites.includes(id)) {
+            setFavourites(favourites.filter((favId) => favId !== id));
+        } else {
+            setFavourites([...favourites, id]);
+        }
+    };
+
+
+
 
     return (
         <div>
@@ -22,6 +33,20 @@ const Product = () => {
                         <div key={index} className='relative shadow-2xl group lg:w-[20%] md:w-[40%] border-1 text-center  border-[#DEE2E6]'>
                             <div className='relative group'>
                                 <img src={item.img} className=' object-cover transition duration-400 ' />
+
+                                <div className="absolute top-2 right-2 ">
+                                    <button onClick={() => toggleFavourite(index)}>
+                                        <Heart
+                                            size={28}
+                                            className={`transition-colors duration-300 ${favourites.includes(index)
+                                                    ? "fill-red-500 text-red-500"
+                                                    : "text-gray-500"
+                                                }`}
+                                        />
+                                    </button>
+                                </div>
+
+
                                 <button
                                     onClick={() => handleClick(item)}
 
@@ -34,20 +59,18 @@ const Product = () => {
                             <p className='mb-4 font-serif font-semibold text-[19px]'>${item.price}</p>
                             <div className='mb-4 font-sans w-[70%] m-auto'>
                                 <p className=''>{item.description}</p>
-                              
+
                             </div>
-                              <div className='w-[40%] md:w-[50%] bg-[#88C8BC] py-3 lg:hidden rounded-xl m-auto justify-between  px-3 flex my-7 shadow' >
-                                    <ShoppingCart size={20} />
-                                    <button  onClick={() => handleClick(item)}>Add to Cart     </button>
-                                </div>
+                            <div className='w-[40%] md:w-[50%] bg-[#88C8BC] py-3 lg:hidden rounded-xl m-auto justify-between  px-3 flex my-7 shadow' >
+                                <ShoppingCart size={20} />
+                                <button onClick={() => handleClick(item)}>Add to Cart     </button>
+                            </div>
                         </div>
 
                     ))}
 
                 </div>
-                <div className='flex justify-center pt-9 lg:py-12'>
-                    
-                </div>
+               
 
             </div>
         </div>

@@ -10,14 +10,12 @@ import 'swiper/css/pagination'
 import { BannerData } from './BannerData';
 
 
-
 const Banner = () => {
-  const [open, setOpen] = useState(false);
   return (
     <div className="  text-white   pb-[1rem] ">
 
-      <div className='max-w-[2000px]  m-auto '>
-          <div className='bg-[#88C8BC] lg:mt-18 w-full flex items-center justify-start lg:justify-center h-[5rem] text-center lg:h-[4rem]  ' >
+      <div className='max-w-[2000px] m-auto '>
+          <div className='bg-[#88C8BC] lg:mt-20 w-full flex items-center justify-start lg:justify-center h-[5rem] text-center lg:h-[4rem]  ' >
           <h2 className='text-white text-[18px] lg:text-[20px] font-light px-3  tracking-[0.05em] uppercase'>Our biggest sale yet 50% off all summer shoes</h2>
         </div>
         {/* Image */}
@@ -49,18 +47,18 @@ const Banner = () => {
                   <p className="text-white lg:text-5xl text-3xl font-light font-serif uppercase mb-2 tracking-wide">{item.discount}</p>
                   <p className="text-white  text-base font-normal uppercase">{item.product}</p>
 
-                  <button className="mt-6 px-6 py-3 cursor-pointer rounded-3xl bg-black font-serif text-white font-light uppercase hover:bg-[#88C8BC] hover:text-black transition">
+                  <button className="mt-6 px-6 py-3  rounded-3xl bg-black font-serif text-white font-light uppercase">
                     Shop Collection
                   </button>
                 </div>
               </div>
-               <div className='w-full shadow-2xl py-15 flex justify-center items-center text-center'>
-          <h3 className='text-xl lg:text-3xl text-black font-light lg:font-semibold font-serif w-[90%] lg:w-[70%]'>It started with a simple idea: Create quality, well-designed products that I wanted myself.</h3>
-        </div>
+             
             </SwiperSlide>
           ))}
         </Swiper>
-
+  <div className='w-full shadow-2xl py-10 lg:mb-12 flex justify-center items-center text-center'>
+          <h3 className='text-xl lg:text-3xl text-black font-light lg:font-semibold font-serif w-[90%] lg:w-[70%]'>It started with a simple idea: Create quality, well-designed products that I wanted myself.</h3>
+        </div>
 
 
 
