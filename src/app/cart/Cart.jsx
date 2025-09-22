@@ -105,7 +105,7 @@ const Cart = () => {
                                     <div className='w-[15%]'>
                                         <button
                                             onClick={() => dispatch(removeFromCart(item.id))}
-                                            className='text-red-500 text-[13px] hover:underline'
+                                            className='text-red-500 cursor-pointer text-[13px] hover:underline'
                                         >
                                             Remove
                                         </button>

@@ -13,6 +13,10 @@ const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
 
+  const handleClickCart = () => {
+    router.push("/cart");
+  }
+
   const handleSearch = () => {
     const query = input.trim().toLowerCase();
 
@@ -73,7 +77,7 @@ const Header = () => {
                           href={subitem.link}
                           key={`${index}-${subindex}`}
                           className={`text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded  hover:bg-teal-50 hover:text-teal-500 transition-colors duration-200  ${pathname === subitem.link
-                            ? "bg-teal-500 text-white" 
+                            ? "bg-teal-500 text-white"
                             : "text-gray-800 hover:bg-teal-50 hover:text-teal-500"
                             } `}
                         >
@@ -94,6 +98,11 @@ const Header = () => {
                 type="text"
                 placeholder="Search"
                 className="w-[90%] lg:w-[30%] border border-[#F2F2F2] rounded-l-full py-2 px-4 focus:outline-none placeholder-gray-400 text-black"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
               />
               <button onClick={handleSearch} className="bg-[#88C8BC] cursor-pointer  text-white p-2 rounded-r-full flex items-center justify-center">
                 <Search size={26} />
@@ -106,14 +115,15 @@ const Header = () => {
               {BannerData.categories?.map((item, index) => (
                 item.project?.map((subitem, subindex) => (
 
-                  <Link href={subitem.link} key={`${index}-${subindex}`} className={`text-black cursor-pointer font-serif text-[13px] uppercase tracking-wider hover:text-teal-400  ${pathname === subitem.link 
-                              ? "text-teal-500 "  
-                              : "text-gray-800 hover:bg-teal-50 "
-                            }`}> {item.tag}</Link>
+                  <Link href={subitem.link} key={`${index}-${subindex}`} className={`text-black  cursor-pointer font-serif text-[13px] uppercase tracking-wider hover:text-teal-400  ${pathname === subitem.link
+                    ? "text-teal-500 "
+                    : "text-gray-800 hover:bg-teal-50 "
+                    }`}> {item.tag}</Link>
                 ))
 
               ))}</div>
-            <div className='flex gap-2 items-center mr-4'>
+
+            <div onClick={handleClickCart} className=' flex gap-2 items-center mr-4'>
               <button className='text-black cursor-pointer font-serif text-[13px] uppercase tracking-wider hover:text-teal-400'><ShoppingCart size={20} /></button>
               <button className='text-black  text-[13px] uppercase tracking-wider cursor-pointer hover:text-teal-400'>Cart   [{items.length === 0 ? "0" : items.length}]</button>
             </div>

@@ -21,13 +21,13 @@ const Product = () => {
                     {ProductData.products.map((item, index) => (
                         <div key={index} className='relative shadow-2xl group lg:w-[20%] md:w-[40%] border-1 text-center  border-[#DEE2E6]'>
                             <div className='relative group'>
-                                <img src={item.img} className='object-cover transition duration-400 group-hover:blur-sm' />
+                                <img src={item.img} className=' object-cover transition duration-400 ' />
                                 <button
                                     onClick={() => handleClick(item)}
 
-                                    className="absolute inset-0  items-center hidden lg:flex justify-center opacity-0 group-hover:opacity-100 transition duration-500  text-white font-serif uppercase tracking-wider  bg-black/30"
+                                    className="w-[40%] h-[13%]  bottom-2 left-1/2 -translate-x-1/2 rounded-3xl cursor-pointer absolute  bg-black items-center gap-2 bottom- hidden lg:flex justify-center opacity-0 group-hover:opacity-100 hover:bg-[#88C8BC] hover:text-black transition duration-500  text-white font-serif  "
                                 >
-                                    <ShoppingCart size={20} /> <br />   Add to Cart
+                                    <ShoppingCart size={20} />   Add to Cart
                                 </button>
                             </div>
                             <h4 className='my-4 font-serif text-[19px]'>{item.productName}</h4>
@@ -46,9 +46,7 @@ const Product = () => {
 
                 </div>
                 <div className='flex justify-center pt-9 lg:py-12'>
-                    <button className=" lg:mt-6 px-6 py-3 rounded-3xl bg-[#222121] font-serif text-white font-light uppercase hover:bg-black  transition">
-                        Shop All Products
-                    </button>
+                    
                 </div>
 
             </div>
