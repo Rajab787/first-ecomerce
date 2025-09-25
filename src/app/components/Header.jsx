@@ -1,137 +1,221 @@
 "use client"
-import React, { useState } from 'react'
-import { Search, ShoppingCart } from "lucide-react";
-import { BannerData } from './Banner/BannerData';
-import Link from 'next/link';
+import React, { useEffect, useRef, useState } from "react";
+import { Heart, Search, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import ProductData from '../components/Data/ProductData.json';
+import LargeMenu from '../components/LargeMenu';
+
+
 
 const Header = () => {
-  const { items } = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart?.items ?? []);
+  const favItems = useSelector((state) => state.favourites?.items ?? []);
+
   const [open, setOpen] = useState(false);
-  const [input, setInput] = useState("")
+  const [desktopDropdown, setDesktopDropdown] = useState(false)
+  const [input, setInput] = useState("");
   const router = useRouter();
   const pathname = usePathname();
 
+  const dropdownRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "hidden"; // scroll disable
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "auto"; // scroll enable
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "auto"; // cleanup
+    };
+  }, [open]);
+
   const handleClickCart = () => {
     router.push("/cart");
-  }
-
+  };
+  const handleClickFav = () => {
+    router.push("/favourites");
+  };
   const handleSearch = () => {
     const query = input.trim().toLowerCase();
+    const validRoutes = ProductData.BannerData.categories
+    console.log("valid", validRoutes);
 
-    if (query === "men") {
-      router.push("/men");
+    // Allowed routes list
+
+
+    if (!query) {
+      alert("Please enter a search query");
+      return;
     }
-    else if (query === "women") {
-      router.push("/women");
-    }
-    else if (query === "cart") {
-      router.push("/cart");
-    }
-    else if (query === "home") {
+
+    if (query === "home") {
       router.push("/");
-    }
-    else if (query === "about") {
-      router.push("/about");
-    }
-
-    else {
+    } else if (validRoutes.includes(query)) {
+      router.push(`/${query}`);
+    } else {
       alert("No section found for this search");
     }
 
     setInput("");
   };
 
+
   return (
-    <div className="pt-10  text-white lg:pt-15   ">
-      <div className='max-w-[2000px]  m-auto '>
-        {/* Header */}
-        <div className='lg:pb-5 bg-white flex  fixed z-50 w-full top-0   justify-start md:block '>
-          <header className='lg:w-[65%] w-[90%] lg:mt-4 m-auto  pt-4 flex flex-col lg:flex-row justify-between mb-3 lg:mb-7'>
-            <div className='flex justify-between  lg:block'>
-              <h1 className='text-[#595959]  font-bold mb-5 lg:mb-0 text-4xl'>Footwear</h1>
-              <button
-                onClick={() => setOpen(!open)}
-                className="flex flex-col mt-3 justify-between w-6 h-5 lg:hidden focus:outline-none"
+    <header className="fixed top-0 left-0 w-full  bg-[#F8FEFE] shadow-sm z-50">
+      <div className="lg:w-[80%] w-[90%]  md:w-[90%] m-auto lg:px-6 py-4  flex justify-between items-center ">
+
+        {/* Logo */}
+        <h1 className="text-[#139695] md:text-3xl font-extrabold lg:text-4xl">Footwear</h1>
+
+
+
+
+        <div className="w-[20%]  md:w-[50%] lg:w-[20%] ml-12 ">
+
+          {/* Nav Links */}
+          <nav className="hidden lg:flex gap-8 lg:text-[16px] font-semibold text-gray-700 uppercase tracking-wide relative group ">
+            {ProductData.BannerData.categories?.map((item, index) =>
+              <Link
+                href={item.link}
+                key={index}
+                className={`${pathname === item.link
+                  ? "text-teal-600"
+                  : "hover:text-teal-500"
+                  }`}
               >
-                <span className="block h-0.5 bg-[#595959]"></span>
-                <span className="block h-0.5 bg-[#595959]"></span>
-                <span className="block h-0.5 bg-[#595959]"></span>
-              </button>
+                {item.tag}
+              </Link>
+            )}
+             <div  className="absolute hidden group-hover:block">
+              <LargeMenu />
             </div>
 
-            <div className="relative">
+          </nav>
+        </div>
+        {/* Search */}
+        <div className="flex justify-end w-[30%]">
 
-              {/* Dropdown Menu */}
-              {open && (
-                <div
-                  className={`absolute right-0 w-44 bg-white shadow-xl lg:hidden rounded-xl py-3 z-50 
-      transform transition-all duration-300 ease-out
-      ${open ? "opacity-100 scale-100 translate-y-1" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
-                >
-                  <div className="flex flex-col gap-3 px-3">
-                    {BannerData.categories?.map((item, index) =>
-                      item.project?.map((subitem, subindex) => (
-                        <Link
-                          href={subitem.link}
-                          key={`${index}-${subindex}`}
-                          className={`text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded  hover:bg-teal-50 hover:text-teal-500 transition-colors duration-200  ${pathname === subitem.link
-                            ? "bg-teal-500 text-white"
-                            : "text-gray-800 hover:bg-teal-50 hover:text-teal-500"
-                            } `}
-                        >
-                          {item.tag}
-                        </Link>
-                      ))
-                    )}
-                  </div>
-                </div>
-              )}
-
-            </div>
-
-            <div className="w-[100%] justify-center lg:justify-end flex">
+          <div className="lg:flex  mx-6  hidden ">
+            <div className="relative w-[100%] max-w-md">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 type="text"
-                placeholder="Search"
-                className="w-[90%] lg:w-[30%] border border-[#F2F2F2] rounded-l-full py-2 px-4 focus:outline-none placeholder-gray-400 text-black"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleSearch();
-                  }
-                }}
+                placeholder="Search products..."
+                className="w-[100%] rounded-full border border-gray-200 py-2 px-4 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               />
-              <button onClick={handleSearch} className="bg-[#88C8BC] cursor-pointer  text-white p-2 rounded-r-full flex items-center justify-center">
-                <Search size={26} />
-              </button>
+              <Search
+                onClick={handleSearch}
+                size={18}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+              />
             </div>
-          </header>
+          </div>
 
-          <div className=' w-[65%] m-auto justify-between hidden lg:flex '>
-            <div className='flex gap-5'>
-              {BannerData.categories?.map((item, index) => (
-                item.project?.map((subitem, subindex) => (
+          {/* Icons */}
+          <div className="flex items-center gap-6">
+            {/* Favourites */}
+            <div className="relative cursor-pointer" onClick={handleClickFav}>
+              <Heart size={20} className="text-gray-700 hover:text-teal-500" />
+              {favItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-semibold rounded-full h-5 w-5 flex items-center justify-center">
+                  {favItems.length}
+                </span>
+              )}
+            </div>
 
-                  <Link href={subitem.link} key={`${index}-${subindex}`} className={`text-black  cursor-pointer font-serif text-[13px] uppercase tracking-wider hover:text-teal-400  ${pathname === subitem.link
-                    ? "text-teal-500 "
-                    : "text-gray-800 hover:bg-teal-50 "
-                    }`}> {item.tag}</Link>
-                ))
+            {/* Cart */}
+            <div className="relative cursor-pointer" onClick={handleClickCart}>
+              <ShoppingCart size={20} className="text-gray-700 hover:text-teal-500" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-semibold rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
+            </div>
 
-              ))}</div>
+            <button
+              onClick={() => setDesktopDropdown(!desktopDropdown)}
+              className=" flex-col hidden lg:flex justify-between w-6 h-5 focus:outline-none"
+            >
+              <span className="block h-0.5 bg-[#595959]"></span>
+              <span className="block h-0.5 bg-[#595959]"></span>
+              <span className="block h-0.5 bg-[#595959]"></span>
+            </button>
+            <div>
+              {desktopDropdown &&
+                <div
+                  className={`absolute right-57 top-16 w-50 bg-white  shadow-xl  rounded-xl py-3 z-50 transform transition-all duration-300 ease-out
+                               ${desktopDropdown ? "opacity-100 scale-100 translate-y-1" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
+                >
+                  <div className="flex flex-col gap-3 px-3">
+                    <h2 className="text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded ">Login</h2>
+                    <h2 className="text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded ">Create Account</h2>
+                    <h2 className="text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded ">Contact us</h2>
+                  </div>
+                </div>
 
-            <div onClick={handleClickCart} className=' flex gap-2 items-center mr-4'>
-              <button className='text-black cursor-pointer font-serif text-[13px] uppercase tracking-wider hover:text-teal-400'><ShoppingCart size={20} /></button>
-              <button className='text-black  text-[13px] uppercase tracking-wider cursor-pointer hover:text-teal-400'>Cart   [{items.length === 0 ? "0" : items.length}]</button>
+              }
+
+
+
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setOpen(!open)}
+                  className="flex flex-col  justify-between w-6 h-5 lg:hidden focus:outline-none"
+                >
+                  <span className="block h-0.5 bg-[#595959]"></span>
+                  <span className="block h-0.5 bg-[#595959]"></span>
+                  <span className="block h-0.5 bg-[#595959]"></span>
+                </button>
+
+
+                {/* Dropdown Menu */}
+                {open && (
+                  <div
+                    className={`absolute  right-0 w-44 bg-white shadow-xl lg:hidden rounded-xl py-3 z-50 
+        transform transition-all duration-300 ease-out
+        ${open ? "opacity-100 scale-100 translate-y-1" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
+                  >
+                    <div className="flex flex-col gap-3 px-3">
+                      {ProductData.BannerData.categories?.map((item, index) => (
+                        <Link
+                          href={item.link}
+                          key={index}
+                          className={`text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded  
+              ${pathname === item.link
+                              ? "bg-[#139695] text-white"
+                              : "hover:bg-teal-50 hover:text-teal-500"
+                            }`}
+                        >
+                          {item.tag}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
 
-export default Header
+
+      </div>
+    </header>
+  );
+};
+
+export default Header;

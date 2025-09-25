@@ -1,13 +1,11 @@
 "use client"
-import React, { useState } from 'react'
-import { Search, ShoppingCart } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { BannerData } from './BannerData';
+import ProductData from '../../components/Data/ProductData.json';
 
 
 const Banner = () => {
@@ -15,7 +13,7 @@ const Banner = () => {
     <div className="  text-white   pb-[1rem] ">
 
       <div className='max-w-[2000px] m-auto '>
-          <div className='bg-[#88C8BC] lg:mt-20 w-full flex items-center justify-start lg:justify-center h-[5rem] text-center lg:h-[4rem]  ' >
+          <div className='bg-[#139695] lg:mt-17 mt-18 w-full flex items-center justify-start lg:justify-center h-[5rem] text-center lg:h-[4rem]  ' >
           <h2 className='text-white text-[18px] lg:text-[20px] font-light px-3  tracking-[0.05em] uppercase'>Our biggest sale yet 50% off all summer shoes</h2>
         </div>
         {/* Image */}
@@ -29,14 +27,14 @@ const Banner = () => {
           pagination={{ clickable: true }}
           speed={800} >
 
-          {BannerData.image.map((item, index) => (
+          {ProductData.BannerData.image?.map((item, index) => (
             <SwiperSlide key={index}>
               
-              <div className='shadow-2xl relative w-full h-[80vh] bg-white overflow-hidden '>
+              <div className='shadow-2xl relative w-full h-[50vh] md:h-[41vh] lg:h-[85vh] bg-white overflow-hidden '>
                 <img
                   src={item.img}
-                  alt={BannerData?.name}
-                  className="absolute inset-0 w-full h-[100vh] lg:h-auto object-cover"
+                  alt={ProductData.BannerData?.name}
+                  className="absolute inset-0 w-full h-[100%]  lg:h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-black/30" />
 
@@ -56,7 +54,7 @@ const Banner = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-  <div className='w-full shadow-2xl py-10 lg:mb-12 flex justify-center items-center text-center'>
+  <div className='w-full shadow-2xl py-4 lg:py-10 lg:mb-12 flex justify-center items-center text-center'>
           <h3 className='text-xl lg:text-3xl text-black font-light lg:font-semibold font-serif w-[90%] lg:w-[70%]'>It started with a simple idea: Create quality, well-designed products that I wanted myself.</h3>
         </div>
 

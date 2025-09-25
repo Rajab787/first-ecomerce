@@ -1,11 +1,10 @@
 import React from 'react'
-import { FooterData } from './FooterData'
 
 const Footer = () => {
     return (
         <div>
-            <div className='max-w-[2000px]  m-auto lg:pb-10'>
-                <div className='lg:w-[70%] w-[90%]  my-10 lg:mb-10  m-auto flex flex-col md:flex-row justify-between'>
+            <div className='max-w-[2000px]  m-auto lg:pb-5'>
+                <div className='lg:w-[70%] w-[90%]  my-10 lg:mb-6  m-auto flex flex-col md:flex-row justify-between'>
 
                     <div className='md:w-[20%] lg:p-6 leading-7 '>
                         <h3 className='mb-1 lg:my-4 font-serif  text-[19px]'>About Footwear</h3>
@@ -55,7 +54,7 @@ const Footer = () => {
 
                 </div>
                 <div className='lg:w-[80%] w-[90%] m-auto'>
-                    <p className='text-[#595959] text-center lg:text-[18px] text-[14px]'>Copyright ©2025 All rights reserved | This template is made with  by Colorlib Demo Images: Unsplash , Pexels.com</p>
+                    <p className='text-[#595959] text-center lg:text-[16px] text-[14px]'>Copyright ©2025 All rights reserved | This template is made with  by Colorlib Demo Images: Unsplash , Pexels.com</p>
                 </div>
             </div>
         </div>

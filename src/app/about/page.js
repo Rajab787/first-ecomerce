@@ -7,7 +7,7 @@ const page = () => {
         <div>
             <div className='max-w-[2000px]  m-auto '>
                 <Header />
-                 <div className='bg-[#88C8BC] lg:mt-22 mt-27 w-full flex items-center justify-start lg:justify-center h-[5rem] text-center lg:h-[4rem]  ' >
+                 <div className='bg-[#139695] lg:mt-17 mt-27 w-full flex items-center justify-start lg:justify-center h-[5rem] text-center lg:h-[4rem]  ' >
                     <h2 className='text-white text-[18px] lg:text-[20px] font-light px-3  tracking-[0.05em] uppercase'>Our biggest sale yet 50% off all summer shoes</h2>
                 </div>
                 <div className='lg:w-[80%] w-[90%] m-auto  flex flex-col lg:flex-row justify-center mt-12 items-center lg:my-22'>

@@ -1,0 +1,359 @@
+{
+  "BannerData": {
+    "name": "MainImg",
+    "image": [
+      {
+        "img": "Home/img_bg_1.jpg",
+        "title": "Men's",
+        "subtitle": "Shoes",
+        "discount": "Collection",
+        "product": "New trending shoes"
+      },
+      {
+        "img": "Home/img_bg_2.jpg",
+        "title": "huge",
+        "subtitle": "Sale",
+        "discount": "50% OFF",
+        "product": "big sale sandals"
+      },
+      {
+        "img": "Home/img_bg_3.jpg",
+        "title": "New",
+        "subtitle": "Arrival",
+        "discount": "up to 30% OFF",
+        "product": "New stylish shoes for men"
+      }
+    ],
+    "categories": [
+      {
+        "tag": "Home",
+        "link": "/"
+      },
+      {
+        "tag": "Men",
+        "link": "/men"
+      },
+      {
+        "tag": "Women",
+        "link": "/women"
+      },
+      {
+        "tag": "About",
+        "link": "/about"
+      },
+      {
+        "tag": "Cart",
+        "link": "/cart"
+      }
+      
+    ]
+  },
+  "ProductData": {
+    "heading": "Best Sellers",
+    "products": [
+      {
+        "id": 1,
+        "img": "Products/item-1.jpg",
+        "productName": "Women's Boots Shoes Maca",
+        "category": "Women",
+        "size": "XS",
+        "color": "blue",
+        "price": 139,
+        "description": "Stylish leather boots designed for all-day comfort.",
+        "detail": "Crafted with premium leather, these women's boots provide long-lasting comfort and support. Their sleek design makes them perfect for both casual outings and special occasions. A must-have addition to your seasonal wardrobe."
+      },
+      {
+        "id": 2,
+        "img": "Products/item-2.jpg",
+        "category": "Women",
+        "color": "brown",
+        "size": "XL",
+        "productName": "Women's Minam Meaghan",
+        "oldPrice": 169.99,
+        "price": 150,
+        "description": "Elegant women's heels perfect for formal occasions.",
+        "isNew": true,
+        "discount": "-29%",
+        "detail": "These elegant heels are designed to complement your formal attire with sophistication. The cushioned insole ensures comfort throughout the evening. Ideal for parties, weddings, or professional gatherings."
+      },
+      {
+        "id": 3,
+        "img": "Products/item-3.jpg",
+        "productName": "Men's Taja Commissioner",
+        "category": "Men",
+        "size": "XXL",
+        "color": "Gray",
+        "price": 139,
+        "description": "Durable men’s formal shoes with a sleek modern look.",
+        "isNew": true,
+        "detail": "Made from high-quality materials, these formal shoes bring together durability and style. The polished finish and sturdy sole make them ideal for office wear and formal occasions. A timeless piece for every gentleman."
+      },
+      {
+        "id": 4,
+        "img": "Products/item-4.jpg",
+        "productName": "Russ Men's Sneakers",
+        "category": "Men",
+        "size": "M",
+        "color": "Blue",
+        "price": 139,
+        "oldPrice": 149.99,
+        "description": "Casual sneakers built for everyday wear and comfort.",
+        "discount": "-19%",
+        "detail": "Lightweight and versatile, these sneakers are designed for everyday use. Their breathable material ensures maximum comfort during long hours. Pair them with jeans or casual outfits for a modern streetwear look."
+      },
+      {
+        "id": 5,
+        "img": "Products/item-5.jpg",
+        "productName": "Women's Boots Shoes Maca",
+        "category": "Women",
+        "size": "L",
+        "color": "Red",
+        "price": 139,
+        "oldPrice": 149.99,
+        "description": "Trendy women’s boots crafted with premium quality.",
+        "isNew": true,
+        "discount": "-29%",
+        "detail": "These trendy boots are crafted for women who love fashion and comfort. Featuring premium stitching and durable soles, they offer style that lasts. Perfect for both urban adventures and chic gatherings."
+      },
+      {
+        "id": 6,
+        "img": "Products/item-6.jpg",
+        "productName": "Men's Boots Shoes Maca",
+        "category": "Men",
+        "size": "XL",
+        "color": "Green",
+        "price": 139,
+        "description": "Classic ankle boots that pair well with any outfit.",
+        "detail": "These men's ankle boots combine rugged durability with classic style. Designed to match casual as well as semi-formal outfits. A wardrobe essential for those who value both comfort and elegance."
+      },
+      {
+        "id": 7,
+        "img": "Products/item-7.jpg",
+        "productName": "Men's Boots Shoes Maca",
+        "category": "Men",
+        "size": "L",
+        "color": "Brown",
+        "price": 139,
+        "oldPrice": 149.99,
+        "description": "Comfortable women’s boots with a fashionable edge.",
+        "isNew": true,
+        "discount": "-29%",
+        "detail": "Featuring a bold design and comfortable fit, these boots are perfect for fashion-forward individuals. Their sturdy construction ensures durability without compromising on style. A stylish pick for any season."
+      },
+      {
+        "id": 8,
+        "img": "Products/item-8.jpg",
+        "productName": "Men's Boots Shoes Maca",
+        "category": "Men",
+        "size": "XXL",
+        "color": "Brown",
+        "price": 139,
+        "description": "Premium boots offering both style and durability.",
+        "detail": "Built with top-grade material, these boots balance elegance with toughness. Ideal for both casual and semi-formal wear. Long-lasting soles provide comfort through extended wear."
+      },
+      {
+        "id": 9,
+        "img": "Products/item-9.jpg",
+        "productName": "Men's Boots Shoes Maca",
+        "category": "Men",
+        "color": "Brown",
+        "size": "M",
+        "price": 139,
+        "oldPrice": 149.99,
+        "description": "Elegant boots designed to elevate your fashion look.",
+        "isNew": true,
+        "discount": "-29%",
+        "detail": "Designed for those who want to stand out, these boots bring class and sophistication. Their refined details make them perfect for elevating everyday outfits. A great pick for style-conscious men."
+      },
+      {
+        "id": 10,
+        "img": "Products/item-10.jpg",
+        "productName": "Women's Boots Shoes Maca",
+        "category": "Women",
+        "size": "S",
+        "color": "Blue",
+        "price": 139,
+        "description": "Modern design boots with maximum walking comfort.",
+        "detail": "Blending modern aesthetics with functional comfort, these boots are perfect for women on the go. The lightweight sole and cushioned design ensure easy walking. A chic yet practical footwear choice."
+      }
+    ]
+  },
+  "PartnerData": [
+    {
+      "name": "Trusted Partner",
+      "partners": [
+        {
+          "img": "Partner/brand-1.jpg",
+          "heading": "Addidas"
+        },
+        {
+          "img": "Partner/brand-2.jpg",
+          "heading": "Nike",
+          "detail": "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life"
+        },
+        {
+          "img": "Partner/brand-3.jpg",
+          "heading": "GUCCI",
+          "detail": "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life"
+        },
+        {
+          "img": "Partner/brand-4.jpg",
+          "heading": "Merrell",
+          "detail": "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life"
+        },
+        {
+          "img": "Partner/brand-5.jpg",
+          "heading": "Puma",
+          "detail": "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life"
+        }
+      ]
+    }
+  ],
+  "TestimonialData": [
+    {
+      "name": "Amit Sharma",
+      "role": "Software Engineer",
+      "message": "Everybody is different, which is why we offer styles for every body. Laborum fuga incidunt laboriosam voluptas iure, delectus dignissimos facilis neque nulla earum.",
+      "image": "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      "name": "Neha Verma",
+      "role": "UI/UX Designer",
+      "message": "Everybody is different, which is why we offer styles for every body. Laborum fuga incidunt laboriosam voluptas iure, delectus dignissimos facilis neque nulla earum.",
+      "image": "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      "name": "Rahul Mehta",
+      "role": "Product Manager",
+      "message": "Everybody is different, which is why we offer styles for every body. Laborum fuga incidunt laboriosam voluptas iure, delectus dignissimos facilis neque nulla earum.",
+      "image": "https://randomuser.me/api/portraits/men/76.jpg"
+    }
+  ],
+  "MenData": 
+    {
+      "heading": "Men’s Shoes",
+      "Men": [
+        {
+          "id": 3,
+          "img": "Products/item-3.jpg",
+          "productName": "Men's Taja Commissioner",
+          "category": "Men",
+          "color": "Gray",
+          "price": "139",
+          "description": "Durable men’s formal shoes with a sleek modern look.",
+          "isNew": true,
+          "detail": "Made from high-quality materials, these formal shoes bring together durability and style. The polished finish and sturdy sole make them ideal for office wear and formal occasions. A timeless piece for every gentleman."
+        },
+        {
+          "id": 4,
+          "img": "Products/item-4.jpg",
+          "productName": "Russ Men's Sneakers",
+          "category": "Men",
+          "color": "Blue",
+          "price": 139,
+          "oldPrice": 149.99,
+          "description": "Casual sneakers built for everyday wear and comfort.",
+          "discount": "-19%",
+          "detail": "Lightweight and versatile, these sneakers are designed for everyday use. Their breathable material ensures maximum comfort during long hours. Pair them with jeans or casual outfits for a modern streetwear look."
+        },
+        {
+          "id": 6,
+          "img": "Products/item-6.jpg",
+          "productName": "Men's Boots Shoes Maca",
+          "category": "Men",
+          "color": "Green",
+          "price": 139,
+          "description": "Classic ankle boots that pair well with any outfit.",
+          "detail": "These men's ankle boots combine rugged durability with classic style. Designed to match casual as well as semi-formal outfits. A wardrobe essential for those who value both comfort and elegance."
+        },
+        {
+          "id": 7,
+          "img": "Products/item-7.jpg",
+          "productName": "Men's Boots Shoes Maca",
+          "category": "Men",
+          "color": "Brown",
+          "price": 139,
+          "oldPrice": 149.99,
+          "description": "Comfortable women’s boots with a fashionable edge.",
+          "isNew": true,
+          "discount": "-29%",
+          "detail": "Featuring a bold design and comfortable fit, these boots are perfect for fashion-forward individuals. Their sturdy construction ensures durability without compromising on style. A stylish pick for any season."
+        },
+        {
+          "id": 8,
+          "img": "Products/item-8.jpg",
+          "productName": "Men's Boots Shoes Maca",
+          "category": "Men",
+          "color": "Brown",
+          "price": 139,
+          "description": "Premium boots offering both style and durability.",
+          "detail": "Built with top-grade material, these boots balance elegance with toughness. Ideal for both casual and semi-formal wear. Long-lasting soles provide comfort through extended wear."
+        },
+        {
+          "id": 9,
+          "img": "Products/item-9.jpg",
+          "productName": "Men's Boots Shoes Maca",
+          "category": "Men",
+          "color": "Brown",
+          "price": 139,
+          "oldPrice": 149.99,
+          "description": "Elegant boots designed to elevate your fashion look.",
+          "isNew": true,
+          "discount": "-29%",
+          "detail": "Designed for those who want to stand out, these boots bring class and sophistication. Their refined details make them perfect for elevating everyday outfits. A great pick for style-conscious men."
+        }
+      ]
+    }
+  ,
+  "WomenData": {
+    "heading": "Women's Shoes",
+    "Women": [
+      {
+        "id": 1,
+        "img": "Products/item-1.jpg",
+        "productName": "Women's Boots Shoes Maca",
+        "category": "Women",
+        "color": "blue",
+        "price": 139,
+        "description": "Stylish leather boots designed for all-day comfort.",
+        "detail": "Crafted with premium leather, these women's boots provide long-lasting comfort and support. Their sleek design makes them perfect for both casual outings and special occasions. A must-have addition to your seasonal wardrobe."
+      },
+      {
+        "id": 2,
+        "img": "Products/item-2.jpg",
+        "category": "Women",
+        "color": "brown",
+        "productName": "Women's Minam Meaghan",
+        "oldPrice": 169.99,
+        "price": 150,
+        "description": "Elegant women's heels perfect for formal occasions.",
+        "isNew": true,
+        "discount": "-29%",
+        "detail": "These elegant heels are designed to complement your formal attire with sophistication. The cushioned insole ensures comfort throughout the evening. Ideal for parties, weddings, or professional gatherings."
+      },
+      {
+        "id": 5,
+        "img": "Products/item-5.jpg",
+        "productName": "Women's Boots Shoes Maca",
+        "category": "Women",
+        "color": "Red",
+        "price": 139,
+        "oldPrice": 149.99,
+        "description": "Trendy women’s boots crafted with premium quality.",
+        "isNew": true,
+        "discount": "-29%",
+        "detail": "These trendy boots are crafted for women who love fashion and comfort. Featuring premium stitching and durable soles, they offer style that lasts. Perfect for both urban adventures and chic gatherings."
+      },
+      {
+        "id": 10,
+        "img": "Products/item-10.jpg",
+        "productName": "Women's Boots Shoes Maca",
+        "category": "Women",
+        "color": "Blue",
+        "price": 139,
+        "description": "Modern design boots with maximum walking comfort.",
+        "detail": "Blending modern aesthetics with functional comfort, these boots are perfect for women on the go. The lightweight sole and cushioned design ensure easy walking. A chic yet practical footwear choice."
+      }
+    ]
+  }
+}
