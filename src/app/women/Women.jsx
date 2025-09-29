@@ -49,7 +49,7 @@ const page = () => {
                     <h2 className='lg:text-3xl text-2xl text-center my-5 lg:my-12 font-semibold font-serif'>{ProductData.WomenData.heading}</h2>
                     <div className='w-[90%]  m-auto flex flex-wrap justify-center gap-7'>
                         {ProductData.WomenData.Women?.map((item, index) => (
-                             <div onClick={() => setSelectedProduct(item)} key={index} className='relative overflow-hidden shadow-2xl group lg:w-[20%] md:w-[40%] border-1 text-center  border-[#DEE2E6]'>
+                             <div onClick={() => setSelectedProduct(item)} key={index} className='cursor-pointer relative overflow-hidden shadow-2xl group lg:w-[20%] md:w-[40%] border-1 text-center  border-[#DEE2E6]'>
                                                         <div className='relative group'>
                                                             <img src={item.img} className=' object-cover transform transition-transform duration-500 group-hover:scale-105' />
                                                             {(item.isNew || item.discount) && (

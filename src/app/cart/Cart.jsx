@@ -22,19 +22,24 @@ const Cart = () => {
 
                     <h2 className='lg:text-4xl mt-5 text-2xl text-[#595959] text-center my-1 lg:mt-12 font-semibold font-serif'>Your Cart</h2>
 
-                    <div className='lg:w-[30%] m-auto  flex  items-center justify-between p-6'>
+                    <div className="relative lg:w-[30%] m-auto flex items-center justify-between p-6">
+                        {/* Line behind circles */}
+                        <div className="w-[80%] absolute top-1/2 left-6 right-0 h-[2px] bg-gray-300 z-0"></div>
 
-                        <div className='w-20 h-20 border-2 border-gray-400  rounded-full flex items-center justify-center '>
+                        {/* Circles */}
+                        <div className="relative z-10 w-20 h-20 border-2 border-gray-400 rounded-full flex items-center justify-center bg-white">
                             <span className="text-gray-700 font-semibold">01</span>
                         </div>
 
-                        <div className='w-20 h-20 border-2 border-gray-400 rounded-full flex items-center justify-center'>
+                        <div className="relative z-10 w-20 h-20 border-2 border-gray-400 rounded-full flex items-center justify-center bg-white">
                             <span className="text-gray-700 font-semibold">02</span>
                         </div>
-                        <div className='w-20 h-20 border-2 border-gray-400 rounded-full flex items-center justify-center'>
+
+                        <div className="relative z-10 w-20 h-20 border-2 border-gray-400 rounded-full flex items-center justify-center bg-white">
                             <span className="text-gray-700 font-semibold">03</span>
                         </div>
                     </div>
+
 
 
                     <div className='lg:w-[30%] m-auto  flex  items-center justify-between p-6'>
@@ -86,7 +91,7 @@ const Cart = () => {
                                         <div className='lg:ml-4 '>
                                             <h4 className='lg:text-lg text-[13px] font-semibold'>{item.productName}</h4>
                                             <p className='hidden lg:block'>${item.price} × {item.quantity}</p>
-                                             <p className='hidden lg:block'>{item.size}</p>
+                                            <p className='hidden lg:block'>{item.size}</p>
 
                                         </div>
                                     </div>

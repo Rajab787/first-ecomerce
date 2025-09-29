@@ -49,11 +49,11 @@ const Product = () => {
 
     return (
         <div>
-            <div className='max-w-[2000px]   m-auto py-5 lg:py-10'>
+            <div  id="product-section" className='max-w-[2000px]   m-auto py-5 lg:py-10'>
                 <h2 className='text-2xl lg:text-4xl text-center mb-5 lg:my-12  font-semibold font-serif'>{ProductData.ProductData.heading}</h2>
                 <div className='w-[90%]  m-auto flex flex-wrap justify-center gap-7'>
                     {ProductData.ProductData.products?.map((item, index) => (
-                        <div onClick={() => setSelectedProduct(item)} key={index} className='relative overflow-hidden shadow-2xl group lg:w-[20%] md:w-[40%] border-1 text-center  border-[#DEE2E6]'>
+                        <div onClick={() => setSelectedProduct(item)} key={index} className='relative cursor-pointer overflow-hidden shadow-2xl group lg:w-[20%] md:w-[40%] border-1 text-center  border-[#DEE2E6]'>
                             <div className='relative group'>
                                 <img src={item.img} className=' object-cover transform transition-transform duration-500 group-hover:scale-105' />
                                 {(item.isNew || item.discount) && (

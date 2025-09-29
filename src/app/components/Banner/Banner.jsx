@@ -1,6 +1,7 @@
 "use client"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import 'animate.css';
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -9,10 +10,17 @@ import ProductData from '../../components/Data/ProductData.json';
 
 
 const Banner = () => {
+    const scrollToProduct = () => {
+    const section = document.getElementById("product-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" }); 
+    }
+  };
+
   return (
     <div className="  text-white   pb-[1rem] ">
 
-      <div className='max-w-[2000px] m-auto '>
+      <div data-aos="fade-up" className='max-w-[2000px] m-auto '>
           <div className='bg-[#139695] lg:mt-17 mt-18 w-full flex items-center justify-start lg:justify-center h-[5rem] text-center lg:h-[4rem]  ' >
           <h2 className='text-white text-[18px] lg:text-[20px] font-light px-3  tracking-[0.05em] uppercase'>Our biggest sale yet 50% off all summer shoes</h2>
         </div>
@@ -45,7 +53,7 @@ const Banner = () => {
                   <p className="text-white lg:text-5xl text-3xl font-light font-serif uppercase mb-2 tracking-wide">{item.discount}</p>
                   <p className="text-white  text-base font-normal uppercase">{item.product}</p>
 
-                  <button className="mt-6 px-6 py-3  rounded-3xl bg-black font-serif text-white font-light uppercase">
+                  <button  onClick={scrollToProduct}  className="mt-6 px-6 py-3  rounded-3xl bg-black font-serif text-white font-light uppercase">
                     Shop Collection
                   </button>
                 </div>

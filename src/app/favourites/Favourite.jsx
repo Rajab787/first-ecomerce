@@ -66,10 +66,11 @@ const Favourite = () => {
                       </div>
 
                       <button
-                        onClick={() => handleClick(item)}
-                        className="w-[40%] h-[13%] bottom-2 left-1/2 -translate-x-1/2 rounded-3xl cursor-pointer absolute bg-black items-center gap-2 hidden lg:flex justify-center opacity-0 group-hover:opacity-100 hover:bg-[#88C8BC] hover:text-black transition duration-500 text-white font-serif"
+                        onClick={(e) => { e.stopPropagation(); handleClick(item) }}
+
+                        className="w-[90%] h-[11%]  bottom-2 left-1/2 -translate-x-1/2 rounded-[10px] cursor-pointer absolute  bg-[#159998] items-center gap-2 bottom- hidden lg:flex justify-center opacity-0 group-hover:opacity-100 hover:bg-[#0d7c7c]  transition duration-500  text-white font-serif  "
                       >
-                        <ShoppingCart size={20} /> Add to Cart
+                        <ShoppingCart size={20} />   Add to Cart
                       </button>
                     </div>
 
@@ -90,31 +91,19 @@ const Favourite = () => {
           )}
         </div>
 
-        <div className="flex flex-col justify-center lg:flex-row w-full  lg:w-[80%] mt-12 m-auto gap-6 px-4">
+          <h2 className='text-center text-2xl mt-16 font-semibold text-gray-900 mb-4'>Our Available things</h2>
 
-          {/* Brands Section */}
-          <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
-            <h2 className="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Brands</h2>
-            <ul className="space-y-3">
-              {["Nike", "Adidas", "Marrel", "Gucci", "Sketcher"].map((brand, index) => (
-                <li
-                  key={index}
-                  className="text-gray-700 cursor-pointer hover:text-[#159998] transition"
-                >
-                  {brand}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="flex flex-col justify-center lg:flex-row w-full shadow-md lg:w-[60%]  m-auto lg:gap-10 ">
 
+       
           {/* Size Section */}
-          <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+          <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl lg:my-5  transition">
             <h2 className="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Size / Width</h2>
             <div className="flex flex-wrap gap-3 mt-4">
               {["7", "7.5", "8", "8.5", "9", "9.5", "10", "11", "11.5", "12", "12.5", "13", "13.5", "14"].map((size, index) => (
                 <span
                   key={index}
-                  className="px-4 py-1 rounded-lg bg-gray-100 text-gray-700 cursor-pointer hover:bg-[#159998] hover:text-white transition"
+                  className="px-4 py-1 rounded-lg bg-gray-100 text-gray-700   transition"
                 >
                   {size}
                 </span>
@@ -122,14 +111,30 @@ const Favourite = () => {
             </div>
           </div>
 
+          
+          {/* Brands Section */}
+          <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl lg:my-5  transition">
+            <h2 className="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Brands</h2>
+            <ul className="space-y-3">
+              {["Nike", "Adidas", "Marrel", "Gucci", "Sketcher"].map((brand, index) => (
+                <li
+                  key={index}
+                  className="text-gray-700   transition"
+                >
+                  {brand}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Color Section */}
-          <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+          <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl lg:my-5  transition">
             <h2 className="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">Colors</h2>
             <div className="flex flex-wrap gap-3 mt-4">
               {["Blue", "Black", "Brown", "Red", "Green", "White", "Gray", "Cream"].map((color, index) => (
                 <span
                   key={index}
-                  className="px-4 py-1 rounded-lg bg-gray-100 text-gray-700 cursor-pointer hover:bg-[#159998] hover:text-white transition"
+                  className="px-4 py-1 rounded-lg bg-gray-100 text-gray-700   transition"
                 >
                   {color}
                 </span>

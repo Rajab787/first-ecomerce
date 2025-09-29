@@ -5,16 +5,14 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 import ProductData from '../components/Data/ProductData.json';
-import LargeMenu from '../components/LargeMenu';
-
-
+import LargeMenuMen from './LargeMenuMen';
+import LargeMenuWomen from "./LargeMenuWomen";
 
 const Header = () => {
   const cartItems = useSelector((state) => state.cart?.items ?? []);
   const favItems = useSelector((state) => state.favourites?.items ?? []);
 
   const [open, setOpen] = useState(false);
-  const [desktopDropdown, setDesktopDropdown] = useState(false)
   const [input, setInput] = useState("");
   const router = useRouter();
   const pathname = usePathname();
@@ -49,11 +47,7 @@ const Header = () => {
   };
   const handleSearch = () => {
     const query = input.trim().toLowerCase();
-    const validRoutes = ProductData.BannerData.categories
-    console.log("valid", validRoutes);
-
-    // Allowed routes list
-
+    const validRoutes = ProductData.BannerData.categories;
 
     if (!query) {
       alert("Please enter a search query");
@@ -71,43 +65,49 @@ const Header = () => {
     setInput("");
   };
 
-
   return (
-    <header className="fixed top-0 left-0 w-full  bg-[#F8FEFE] shadow-sm z-50">
-      <div className="lg:w-[80%] w-[90%]  md:w-[90%] m-auto lg:px-6 py-4  flex justify-between items-center ">
+    <header className="fixed top-0 left-0 w-full bg-[#F8FEFE] shadow-sm z-50">
+      <div className="lg:w-[80%] w-[90%] md:w-[90%] m-auto lg:px-6 py-4 flex justify-between items-center ">
 
         {/* Logo */}
         <h1 className="text-[#139695] md:text-3xl font-extrabold lg:text-4xl">Footwear</h1>
 
+        {/* Nav Links */}
+        <div className="w-[20%] md:w-[50%] lg:w-[20%] ml-12">
+          <nav className="hidden lg:flex gap-8 lg:text-[16px] font-semibold text-gray-700 uppercase tracking-wide">
+            {ProductData.BannerData.categories?.map((item, index) => {
+              const isRestricted = ["Home", "About", "Cart"].includes(item.tag);
 
+              return (
+                <div key={index} className="relative group">
+                  <Link
+                    href={item.link}
+                    className={`${pathname === item.link
+                      ? "text-teal-600"
+                      : "hover:text-teal-500"
+                      }`}
+                  >
+                    {item.tag}
+                  </Link>
 
-
-        <div className="w-[20%]  md:w-[50%] lg:w-[20%] ml-12 ">
-
-          {/* Nav Links */}
-          <nav className="hidden lg:flex gap-8 lg:text-[16px] font-semibold text-gray-700 uppercase tracking-wide relative group ">
-            {ProductData.BannerData.categories?.map((item, index) =>
-              <Link
-                href={item.link}
-                key={index}
-                className={`${pathname === item.link
-                  ? "text-teal-600"
-                  : "hover:text-teal-500"
-                  }`}
-              >
-                {item.tag}
-              </Link>
-            )}
-             <div  className="absolute hidden group-hover:block">
-              <LargeMenu />
-            </div>
+                  {/* Large Menus based on condition */}
+                  {!isRestricted && (
+                    <div className="absolute hidden group-hover:block top-full left-0">
+                      {item.tag === "Men" && <LargeMenuMen />}
+                      {item.tag === "Women" && <LargeMenuWomen />}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
 
           </nav>
         </div>
-        {/* Search */}
-        <div className="flex justify-end w-[30%]">
 
-          <div className="lg:flex  mx-6  hidden ">
+        {/* Search + Icons */}
+        <div className="flex justify-end w-[30%]">
+          {/* Search Bar */}
+          <div className="lg:flex mx-6 hidden">
             <div className="relative w-[100%] max-w-md">
               <input
                 value={input}
@@ -147,48 +147,27 @@ const Header = () => {
               )}
             </div>
 
-            <button
-              onClick={() => setDesktopDropdown(!desktopDropdown)}
-              className=" flex-col hidden lg:flex justify-between w-6 h-5 focus:outline-none"
-            >
-              <span className="block h-0.5 bg-[#595959]"></span>
-              <span className="block h-0.5 bg-[#595959]"></span>
-              <span className="block h-0.5 bg-[#595959]"></span>
-            </button>
+            {/* Desktop Dropdown */}
+
             <div>
-              {desktopDropdown &&
-                <div
-                  className={`absolute right-57 top-16 w-50 bg-white  shadow-xl  rounded-xl py-3 z-50 transform transition-all duration-300 ease-out
-                               ${desktopDropdown ? "opacity-100 scale-100 translate-y-1" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
-                >
-                  <div className="flex flex-col gap-3 px-3">
-                    <h2 className="text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded ">Login</h2>
-                    <h2 className="text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded ">Create Account</h2>
-                    <h2 className="text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded ">Contact us</h2>
-                  </div>
-                </div>
-
-              }
 
 
-
+              {/* Mobile Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setOpen(!open)}
-                  className="flex flex-col  justify-between w-6 h-5 lg:hidden focus:outline-none"
+                  className="flex flex-col justify-between w-6 h-5 lg:hidden focus:outline-none"
                 >
                   <span className="block h-0.5 bg-[#595959]"></span>
                   <span className="block h-0.5 bg-[#595959]"></span>
                   <span className="block h-0.5 bg-[#595959]"></span>
                 </button>
 
-
-                {/* Dropdown Menu */}
                 {open && (
                   <div
-                    className={`absolute  right-0 w-44 bg-white shadow-xl lg:hidden rounded-xl py-3 z-50 
-        transform transition-all duration-300 ease-out
-        ${open ? "opacity-100 scale-100 translate-y-1" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
+                    className={`absolute right-0 w-44 bg-white shadow-xl lg:hidden rounded-xl py-3 z-50 
+                      transform transition-all duration-300 ease-out
+                      ${open ? "opacity-100 scale-100 translate-y-1" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
                   >
                     <div className="flex flex-col gap-3 px-3">
                       {ProductData.BannerData.categories?.map((item, index) => (
@@ -196,7 +175,7 @@ const Header = () => {
                           href={item.link}
                           key={index}
                           className={`text-gray-800 font-medium text-sm uppercase tracking-wide py-2 px-2 rounded  
-              ${pathname === item.link
+                          ${pathname === item.link
                               ? "bg-[#139695] text-white"
                               : "hover:bg-teal-50 hover:text-teal-500"
                             }`}
@@ -211,7 +190,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-
 
       </div>
     </header>

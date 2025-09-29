@@ -78,11 +78,7 @@ const FAQ = () => {
             </div>
 
           
-            <div className="text-center">
-                <button className="inline-flex items-center px-8 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 shadow-sm hover:shadow-md">
-                    More Questions
-                </button>
-            </div>
+           
         </div>
     );
 };
